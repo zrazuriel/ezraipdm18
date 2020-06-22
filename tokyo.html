@@ -1,0 +1,60 @@
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" type="text/css" href="clock.css">
+    
+    <title>API World Clock</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <body>
+            <br>
+            <div id="timezone"></div>
+            <img id="city" style="max-width:700px;">
+            <div id="clock"></div>
+            
+
+            <div class="w3-bar">
+                <a href="jakarta.html" class="w3-button w3-black">Jakarta</a>
+                <a href="tokyo.html" button class="w3-button w3-yellow">Tokyo</a>
+                <a href="london.html"button class="w3-button w3-black">London</a>
+                <a href="ny.html" class="w3-button w3-black">New York</a>
+              </div>
+            <!-- Get Online JSON-->
+            <script>
+            var staticUrl = 'http://worldtimeapi.org/api/timezone/Asia/Tokyo';
+            
+            setInterval(myTime, 1000);
+            function myTime(){
+            // Clock 
+            $.getJSON(staticUrl, function(data){
+                //console.log("Activated") //check
+                
+                //Get data
+                var time = String(data.datetime);
+                var hour = parseInt(time.substr(11,2),10);
+                
+                if (hour > 19)  {
+                    document.getElementById("city").src="pictures/night.png"
+                } else if (hour > 16)  {
+                    document.getElementById("city").src="pictures/sunset.png"
+                } else if (hour > 6){
+                    document.getElementById("city").src="pictures/day.png"
+                } else if (hour > 4){
+                    document.getElementById("city").src="dawn.png"
+                } else {
+                    document.getElementById("city").src="night.png"
+                }
+                
+                
+                //Texts
+                document.getElementById("clock").innerHTML = time.substr(11,5);
+                document.getElementById("timezone").innerHTML = data.timezone;
+                //document.getElementById("demo").innerHTML = data.datetime;
+            });
+            }
+            </script>
+
+        </body>
+    </head>
+</html>

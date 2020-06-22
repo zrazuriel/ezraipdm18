@@ -1,0 +1,27 @@
+body {
+    background-color: #222222;
+    color: white;
+   font-family: "Arial";
+    font-size: 20px;
+     text-align: center;
+ 
+  }
+  #city{
+      width: 80%;
+  }
+
+  #clock{
+      font-size: 130px;
+  }
+  #timezone{
+      font-size: 30px;
+  }
+
+  p  {
+      
+  font-family: "Arial";
+  font-weight: 600;
+    font-size: 15px;
+     text-align: center;
+   
+  }
